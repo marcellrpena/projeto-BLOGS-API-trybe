@@ -1,11 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-  const UserTable = sequelize.define('Category', {
+  const categoryTable = sequelize.define('Category', {
     id: DataTypes.INTEGER,
     name: DataTypes.STRING,
   },
   {
     timeStamps: false,
-    tableName: 'users',
+    tableName: 'categories',
     underscored: true,
   });
 
@@ -16,5 +16,5 @@ module.exports = (sequelize, DataTypes) => {
     })
   }
   
-  return UserTable;
+  return categoryTable;
 };
