@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   UserTable.associate = (models) => {
-    UserTable.belongsTo(models.Blog_Post, {
+    UserTable.hasOne(models.Blog_Post, {
       as: 'blog_posts',
       foreignKey: 'user_id'
     })
