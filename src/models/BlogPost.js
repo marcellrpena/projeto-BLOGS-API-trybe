@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const postTable = sequelize.define('BlogPost', {
-    /* id: {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-    }, */
+    },
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     userId: DataTypes.INTEGER,
