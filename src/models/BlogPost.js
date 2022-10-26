@@ -1,6 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const postTable = sequelize.define('BlogPost', {
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     userId: DataTypes.INTEGER,
@@ -8,9 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     updated: DataTypes.DATA,
   },
   {
-    timeStamps: true,
     tableName: 'blog_posts',
     underscored: true,
+    createdAt: 'published',
+    updatedAt: 'updated',
   });
 
   postTable.associate = (models) => {
