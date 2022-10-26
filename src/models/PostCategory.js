@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     categoryId: DataTypes.INTEGER,
   },
   {
-    timeStamps: false,
+    timestamps: false,
     tableName: 'posts_categories',
     underscored: true,
   });

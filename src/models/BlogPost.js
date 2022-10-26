@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const postTable = sequelize.define('BlogPost', {
-    id: {
+    /* id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-    },
+    }, */
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     userId: DataTypes.INTEGER,
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId'
     })
     postTable.hasMany(models.PostCategory, {
-      as: 'posts_categories',
+      as: 'postsCategories',
       foreignKey: 'postId'
     })
   }
