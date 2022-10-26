@@ -19,14 +19,14 @@ const validateLogin = async ({ email, password }) => {
   }
 
   const findUser = await User.findOne({
-    where: { email },
+    where: { email, password },
   });
 
-  if (!findUser || findUser.password !== password) {
+  if (!findUser) {
     return { status: statusCode.BAD_REQUEST, message: invalidField };
   }
-
-  const token = createToken({ password: '', ...findUser });
+  const { password: _, ...userWithoutPassword } = findUser;
+  const token = createToken(userWithoutPassword);
   return { status: null, message: token };
 };
 

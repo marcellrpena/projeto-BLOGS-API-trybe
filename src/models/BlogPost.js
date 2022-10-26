@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     userId: DataTypes.INTEGER,
-    published: DataTypes.DATA,
-    updated: DataTypes.DATA,
+    published: DataTypes.DATE,
+    updated: DataTypes.DATE,
   },
   {
     tableName: 'blog_posts',
@@ -21,11 +21,11 @@ module.exports = (sequelize, DataTypes) => {
   postTable.associate = (models) => {
     postTable.belongsTo(models.User, {
       as: 'users',
-      foreignKey: 'user_id'
+      foreignKey: 'userId'
     })
     postTable.hasMany(models.PostCategory, {
       as: 'posts_categories',
-      foreignKey: 'post_id'
+      foreignKey: 'postId'
     })
   }
   
