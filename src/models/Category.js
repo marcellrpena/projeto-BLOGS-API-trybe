@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
   });
 
-  UserTable.associate = (models) => {
-    UserTable.hasMany(models.PostCategory, {
+  categoryTable.associate = (models) => {
+    categoryTable.hasMany(models.PostCategory, {
       as: 'posts_categories',
       foreignKey: 'category_id'
     })

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const categoryTable = sequelize.define('BlogPost', {
+  const postTable = sequelize.define('BlogPost', {
     id: DataTypes.INTEGER,
     title: DataTypes.STRING,
     content: DataTypes.STRING,
@@ -13,16 +13,16 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
   });
 
-  categoryTable.associate = (models) => {
-    categoryTable.belongsTo(models.User, {
+  postTable.associate = (models) => {
+    postTable.belongsTo(models.User, {
       as: 'users',
       foreignKey: 'user_id'
     })
-    categoryTable.hasMany(models.PostCategory, {
+    postTable.hasMany(models.PostCategory, {
       as: 'posts_categories',
       foreignKey: 'post_id'
     })
   }
   
-  return categoryTable;
+  return postTable;
 };
