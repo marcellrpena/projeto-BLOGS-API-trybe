@@ -7,4 +7,5 @@ module.exports = {
   UNPROCESSABLE_ENTITY: 422,
   SERVER_ERROR: 500,
   NO_CONTENT: 204,
+  CONFLICT: 409,
 };

@@ -22,4 +22,10 @@ const validateToken = (token) => {
     }
 };
 
-module.exports = { createToken, validateToken };
+const newToken = (user) => {
+    const { password: _, ...userWithoutPassword } = user;
+    const token = createToken(userWithoutPassword);
+    return { status: null, message: token };
+  };
+
+module.exports = { createToken, validateToken, newToken };
