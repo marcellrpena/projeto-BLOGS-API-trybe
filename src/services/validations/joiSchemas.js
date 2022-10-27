@@ -3,6 +3,7 @@ const Joi = require('joi');
 const emailSchema = Joi.string().email().required();
 const passwordSchema = Joi.string().min(6).required();
 const imageSchema = Joi.string();
+const idSchema = Joi.number().min(1).required();
 
 const loginSchema = Joi.object({
   email: emailSchema,
@@ -21,4 +22,5 @@ const inputUserSchema = Joi.object({
 module.exports = {
   loginSchema,
   inputUserSchema,
+  idSchema,
 };
