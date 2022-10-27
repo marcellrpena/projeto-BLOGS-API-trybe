@@ -4,4 +4,7 @@ module.exports = {
   emailExist: { message: 'User already registered' },
   nameExist: { message: 'Category already registered' },
   userNotExist: { message: 'User does not exist' },
+  categoryNotFound: {
+    message: 'one or more "categoryIds" not found',
+  },
 };

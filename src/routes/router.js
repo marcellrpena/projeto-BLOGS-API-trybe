@@ -3,6 +3,7 @@ const express = require('express');
 const authorization = require('./authorization.router');
 const userRouter = require('./user.router');
 const categoryRouter = require('./category.router');
+const postRouter = require('./post.router');
 
 const routers = express.Router();
 
@@ -10,6 +11,7 @@ const routers = express.Router();
 routers.use('/login', authorization);
 routers.use('/user', userRouter);
 routers.use('/categories', categoryRouter);
+routers.use('/post', postRouter);
 
 // rotas privadas
 

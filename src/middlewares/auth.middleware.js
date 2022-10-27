@@ -7,7 +7,8 @@ const validateToken = async (req, res, next) => {
   if (!status) {
     return res.status(statusCode.UNAUTHORIZED).json({ message });
   }
-  // req.user = { message };
+  const { dataValues } = message;
+  req.user = dataValues;
   next();
 };
 

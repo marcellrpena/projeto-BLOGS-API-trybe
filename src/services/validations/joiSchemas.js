@@ -6,6 +6,16 @@ const imageSchema = Joi.string();
 const idSchema = Joi.number().min(1).required();
 const categoryNameSchema = Joi.string().required();
 
+const titleSchema = Joi.string().required();
+const contentSchema = Joi.string().required();
+const categoryIdSchema = Joi.array().min(1).required();
+
+const postSchema = Joi.object({
+  title: titleSchema,
+  content: contentSchema,
+  categoryIds: categoryIdSchema,
+});
+
 const loginSchema = Joi.object({
   email: emailSchema,
   password: passwordSchema,
@@ -29,4 +39,5 @@ module.exports = {
   inputUserSchema,
   idSchema,
   categorySchema,
+  postSchema,
 };

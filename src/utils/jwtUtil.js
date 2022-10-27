@@ -12,10 +12,10 @@ const createToken = (data) => {
 
 const validateToken = (token) => {
   try {
-    // const { data } = jwt.verify(token, process.env.JWT_SECRET);
-    jwt.verify(token, process.env.JWT_SECRET);
+    const { data } = jwt.verify(token, process.env.JWT_SECRET);
+    // jwt.verify(token, process.env.JWT_SECRET);
 
-    return { status: 200 };
+    return { status: 200, message: data };
   } catch (error) {
     const e = 'Expired or invalid token';
     return { status: null, message: e };
