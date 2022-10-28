@@ -7,4 +7,5 @@ module.exports = {
   categoryNotFound: {
     message: 'one or more "categoryIds" not found',
   },
+  postNotExist: { message: 'Post does not exist' },
 };
