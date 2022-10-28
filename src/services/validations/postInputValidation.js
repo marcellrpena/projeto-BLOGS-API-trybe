@@ -1,7 +1,8 @@
 const errorMessage = require('../../helpers/errorMessage');
 const statusCode = require('../../helpers/statusCode');
-const { postSchema } = require('./joiSchemas');
-const { Category } = require('../../models');
+const { postSchema, updatePostSchema } = require('./joiSchemas');
+const { Category, BlogPost } = require('../../models');
+const { getUserByName } = require('../user.service');
 
 const validateNewPost = async (data) => {
   const { categoryIds } = data;
@@ -17,12 +18,24 @@ const validateNewPost = async (data) => {
   return { status: null };
 };
 
-/* console.log(validateNewPost({
-  title: 'Latest updates, August 1st',
-  content: 'The whole text for the blog post goes here in this key',
-  // categoryIds: [1, 2],
-})); */
+const validateUpdatePost = async (id, data, name) => {
+  const { error } = updatePostSchema.validate(data);
+  if (error) {
+    return { status: statusCode.BAD_REQUEST, message: errorMessage.required };
+  }
+  const posts = await BlogPost.findByPk(id);
+  if (!posts) return { status: statusCode.NOT_FOUND, message: errorMessage.postNotExist };
+  const { dataValues } = posts;
+  const user = await getUserByName(name);
+  console.log(user);
+  if (dataValues.id !== user.id) {
+    return { status: statusCode.UNAUTHORIZED, message: errorMessage.badUser };
+  }
+
+  return { status: null };
+};
 
 module.exports = {
   validateNewPost,
+  validateUpdatePost,
 };

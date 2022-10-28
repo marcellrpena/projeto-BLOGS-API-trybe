@@ -16,6 +16,11 @@ const postSchema = Joi.object({
   categoryIds: categoryIdSchema,
 });
 
+const updatePostSchema = Joi.object({
+  title: titleSchema,
+  content: contentSchema,
+});
+
 const loginSchema = Joi.object({
   email: emailSchema,
   password: passwordSchema,
@@ -40,4 +45,5 @@ module.exports = {
   idSchema,
   categorySchema,
   postSchema,
+  updatePostSchema,
 };

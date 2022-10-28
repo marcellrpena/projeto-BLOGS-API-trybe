@@ -8,4 +8,7 @@ module.exports = {
     message: 'one or more "categoryIds" not found',
   },
   postNotExist: { message: 'Post does not exist' },
+  badUser: {
+    message: 'Unauthorized user',
+  },
 };

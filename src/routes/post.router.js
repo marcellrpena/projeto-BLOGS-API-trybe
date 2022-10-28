@@ -8,5 +8,6 @@ router.post('/', validToken.validateToken, postController.addNewPost);
 
 router.get('/:id', validToken.validateToken, postController.getPostById);
 router.get('/', validToken.validateToken, postController.getAllPost);
+router.put('/:id', validToken.validateToken, postController.updatePost);
 
 module.exports = router;

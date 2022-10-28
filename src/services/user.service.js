@@ -28,8 +28,14 @@ const getUserById = async (userId) => {
   return { status: statusCode.OK, message: userWithoutPassword };
 };
 
+const getUserByName = async (displayName) => {
+  const user = await User.findOne({ where: { displayName } });
+  return user;
+};
+
 module.exports = {
   addNewUser,
   getAllUsers,
   getUserById,
+  getUserByName,
 };
