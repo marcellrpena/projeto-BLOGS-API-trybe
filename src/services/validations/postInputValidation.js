@@ -18,17 +18,17 @@ const validateNewPost = async (data) => {
   return { status: null };
 };
 
-const validateUpdatePost = async (id, data, name) => {
+const validateUpdatePost = async (postId, data, name) => {
   const { error } = updatePostSchema.validate(data);
   if (error) {
     return { status: statusCode.BAD_REQUEST, message: errorMessage.required };
   }
-  const posts = await BlogPost.findByPk(id);
+  const posts = await BlogPost.findByPk(postId);
   if (!posts) return { status: statusCode.NOT_FOUND, message: errorMessage.postNotExist };
   const { dataValues } = posts;
   const user = await getUserByName(name);
-  console.log(user);
-  if (dataValues.id !== user.id) {
+  const { id } = user.dataValues;
+  if (dataValues.id !== id) {
     return { status: statusCode.UNAUTHORIZED, message: errorMessage.badUser };
   }
 
